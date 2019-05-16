@@ -1,4 +1,7 @@
 public class Program {
+
+    private static final int maxGeneration = 1;
+
     public static void main(String[] args) {
         GenticTSP tsp = new GenticTSP();
         tsp.addCity(new City("Baghdad",33.312805, 44.361488));
@@ -9,9 +12,14 @@ public class Program {
         tsp.addCity(new City("Mosul",36.340000, 43.130001));
         tsp.addCity(new City("kirkuk",35.478565, 44.401932));
         tsp.addCity(new City("Karbala",32.607380,44.081657));
-
+        int generation = 0;
         tsp.initialization();
+        while (generation < maxGeneration){
+            tsp.calculateFitness(); tsp.printPopulation();
+            tsp.selection();
+            tsp.cycleCrossover();
+            generation++;
+        }
 
-        tsp.printPopulation();
     }
 }

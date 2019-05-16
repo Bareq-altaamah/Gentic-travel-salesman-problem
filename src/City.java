@@ -22,4 +22,9 @@ public class City {
     public double getLongitude(){
         return this.longitude;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (this.name).equals(((City)obj).name);
+    }
 }
