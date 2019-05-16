@@ -14,4 +14,12 @@ public class City {
     public String toString() {
         return this.name;
     }
+
+    public double getLatitude(){
+        return this.latitude;
+    }
+
+    public double getLongitude(){
+        return this.longitude;
+    }
 }
