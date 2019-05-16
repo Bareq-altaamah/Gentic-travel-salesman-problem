@@ -22,9 +22,19 @@ public class GenticTSP {
             population[i] = new ArrayList<>(generateChromsome());
         }
     }
+
+    public double fitness(ArrayList<City> chromosome){
+        double totalDistance = 0.0d;
+        for (int i = 0; i < chromosome.size()-1; i++) {
+            totalDistance += Sphere.havrsineDistance(chromosome.get(i),chromosome.get(i+1));
+        }
+        totalDistance += Sphere.havrsineDistance(chromosome.get(chromosome.size()-1),chromosome.get(0));
+        return totalDistance;
+    }
+
     public void printPopulation(){
         for(int i=0;i<POPULATION_SIZE;i++){
-            System.out.println(i+"->"+population[i]);
+            System.out.println(i+"->"+population[i]+" - fitness = "+fitness(population[i]));
         }
     }
 
