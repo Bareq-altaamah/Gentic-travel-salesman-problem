@@ -1,6 +1,6 @@
 public class Program {
 
-    private static final int maxGeneration = 1;
+    private static final int maxGeneration = 200;
 
     public static void main(String[] args) {
         GenticTSP tsp = new GenticTSP();
@@ -14,14 +14,21 @@ public class Program {
         tsp.addCity(new City("Karbala",32.607380,44.081657));
         int generation = 0;
         tsp.initialization();
+        System.out.println("G0:");
+        tsp.printPopulation();
         while (generation < maxGeneration){
-            tsp.calculateFitness(); tsp.printPopulation();
+            tsp.calculateFitness();
             tsp.selection();
             tsp.cycleCrossover();
             tsp.mutation();
-            tsp.updateChromosomes(); tsp.printPopulation();
+            tsp.updateChromosomes();
+
             generation++;
+            System.out.println("G"+generation);
+            tsp.printPopulation();
+
         }
+        System.out.println("best path found is: "+tsp.getPath());
 
     }
 }

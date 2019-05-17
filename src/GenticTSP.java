@@ -6,8 +6,8 @@ import java.util.Random;
 public class GenticTSP {
 
     private static final int POPULATION_SIZE = 50;
-    private static final double MUTATION_PROBABILITY = 0.05;
-    private static final int K = 5; //how many chromosome selected in K tourment
+    private static final double MUTATION_PROBABILITY = 0.06;
+    private static final int K = 10; //how many chromosome selected in K tourment
     private static ArrayList<City> allCites = new ArrayList<City>();
     private static ArrayList<City> []population = new ArrayList[POPULATION_SIZE];
     private static double fitnessArray [] = new double[POPULATION_SIZE];
@@ -211,5 +211,18 @@ public class GenticTSP {
         population[p1Index] = new ArrayList<City>(best1);
         population[p2Index] = new ArrayList<City>(best2);
     }
-
+    public ArrayList<City> getPath(){
+        double bestFitness = fitnessArray[0];
+        int bestIndex = 0;
+        for (int i = 0; i < fitnessArray.length; i++) {
+            if(fitnessArray[i]<bestFitness){
+                bestFitness = fitnessArray[i];
+                bestIndex = i;
+            }
+        }
+        System.out.println(bestFitness);
+        ArrayList<City> path = new ArrayList<City>(population[bestIndex]);
+        path.add(path.get(0));
+        return path;
+    }
 }
