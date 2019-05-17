@@ -18,6 +18,8 @@ public class Program {
             tsp.calculateFitness(); tsp.printPopulation();
             tsp.selection();
             tsp.cycleCrossover();
+            tsp.mutation();
+            tsp.updateChromosomes(); tsp.printPopulation();
             generation++;
         }
 
